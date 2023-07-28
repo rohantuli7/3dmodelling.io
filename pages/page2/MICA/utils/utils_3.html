@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Mesh utils &#8212; 3D Face Modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/page2/MICA/utils/utils_3';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Quickstart guide" href="../../../page3/quickstart.html" />
+    <link rel="prev" title="Video utils" href="utils_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    3D Face Modelling
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../page1/dockerfiles.html">Dockerfiles &amp; images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../containers.html">Containers</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../MICA.html">MICA</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../mesh_libs.html">Head modelling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis.html">Analysis</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="utils_1.html">Utils</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="utils_2.html">Video utils</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Mesh utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../page3/quickstart.html">Quickstart guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../page4/future_work.html">Future work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../page5/cheatsheet.html">Cheatsheets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/pages/page2/MICA/utils/utils_3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mesh utils</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registration-and-calibration">Registration and calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-analysis">Mesh analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glasses-fitting">Glasses fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-code-analysis">Shape code analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mesh-utils">
+<h1>Mesh utils<a class="headerlink" href="#mesh-utils" title="Permalink to this heading">#</a></h1>
+<p>This section describes the mesh utilities developed during this project. This library has been primarily used for in the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">collection</span> <span class="pre">analysis</span></code> stage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location: <code class="docutils literal notranslate"><span class="pre">/MICA/src/utils/mesh_utils.py</span></code></p>
+</div>
+<section id="registration-and-calibration">
+<h2>Registration and calibration<a class="headerlink" href="#registration-and-calibration" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_mesh(known_lmks,</span> <span class="pre">arb_lmks,</span> <span class="pre">arb_mesh)</span></code>:</p>
+<ul class="simple">
+<li><p>Uses procrustes to align one mesh with another</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">known_lmks</span></code>: target alignment landmarks (np array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arb_lmks</span></code>: arbitary landmarks (np array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arb_mesh</span></code>: mesh to transform (Trimesh)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">transformedMesh</span></code>: transformed mesh</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trans_lmks</span></code>: transformed landmarks</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detect_outliers_iqr(data,</span> <span class="pre">factor=1.5)</span></code>:</p>
+<ul class="simple">
+<li><p>Function to detect outliers using IQR</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: array with distances (numpy array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">factor</span></code>: factor for outlier detection (defaut: 1.5, dtype=int)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>Bool mask (numpy bool array)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple" id="mu3" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">calib_MICA_h2(H2Lmks,</span> <span class="pre">MICAMeshes,</span> <span class="pre">MICALmks)</span></code>:</p>
+<ul class="simple">
+<li><p>Calibrating MICA meshes with H2</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">H2Lmks</span></code>: H2 landmarks (numpy array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MICAMeshes</span></code>: MICA meshes (dict(expression(str):mesh(trimesh)))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MICALmks</span></code>: MICA landmarks (dict(expression(str):landmarks(np array)))</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: transformed meshes (dict(expression(str):mesh(trimesh)))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>: transformed landmarks (dict(expression(str):landmarks(np array)))</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="mesh-analysis">
+<h2>Mesh analysis<a class="headerlink" href="#mesh-analysis" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">show_dist(mesh1,</span> <span class="pre">mesh2,</span> <span class="pre">color_map=&quot;cool&quot;)</span></code>:</p>
+<ul class="simple">
+<li><p>Heatmap which displays difference between two meshes</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh1</span></code>: mesh to compare with other mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh2</span></code>: other mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color_map</span></code>: color map for heatmap (default: “cool”, dtype: str)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple" id="mu5" start="5">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_diff_mesh(mesh1,</span> <span class="pre">mesh2,</span> <span class="pre">method=&quot;clip&quot;,</span> <span class="pre">clip_min=0.1,</span> <span class="pre">color_map=&quot;jet&quot;)</span></code>:</p>
+<ul class="simple">
+<li><p>Function to get differences between two meshes omiting outlier points</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh1</span></code>: mesh to compare with other mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh2</span></code>: other mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code>: outlier detection method (default: “clip”, options: “clip” or “iqr”, dtype=str)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clip_min</span></code>: minimum clip range (only used when method=”clip”, default: 0.1, dtype=str)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color_map</span></code>: color map (default: “jet”, dtype=str)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff_mesh</span></code>: Mesh with heatmap face colours</p></li>
+<li><p>Non outlier distances array</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_diff_mesh(diff_mesh,</span> <span class="pre">dsts)</span></code>:</p>
+<ul class="simple">
+<li><p>Function to display differences between two meshes</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff_mesh</span></code>: mesh generated using <a class="reference internal" href="#mu5"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_diff_mesh()</span></code></span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dsts</span></code>: Non outlier distances array calculated using <a class="reference internal" href="#mu5"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_diff_mesh()</span></code></span></a></p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_lmks(rows,</span> <span class="pre">cols,</span> <span class="pre">meshes,</span> <span class="pre">lmks)</span></code>:</p>
+<ul class="simple">
+<li><p>Function to show meshes and their respective landmarks</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rows</span></code>: number of rows of mesh plots(int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cols</span></code>: number of columnrs of mesh plots (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meshes</span></code>: meshes dict (expression(str):mesh(Trimesh))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lmks</span></code>: landmark dict (expression(str):mesh(Trimesh))</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple" id="mu8" start="8">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_mesh_diff_data(mesh_data,</span> <span class="pre">mesh)</span></code>:</p>
+<ul class="simple">
+<li><p>Main function to call <a class="reference internal" href="#mu5"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_diff_mesh()</span></code></span></a> for multiple meshes</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_data</span></code>: meshes dict (expression(str):mesh(Trimesh))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code>: Target mesh (Trimesh)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: difference meshes and distances (dict(meshes:diff_meshes(dict), dsts:dsts))</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_all_mesh_diff(rows,</span> <span class="pre">cols,</span> <span class="pre">dsts,</span> <span class="pre">meshes)</span></code>:</p>
+<ul class="simple">
+<li><p>Function to show heatmaps of all meshes for different expressions</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rows</span></code>: number of rows of mesh plots(int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cols</span></code>: number of columnrs of mesh plots (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dsts</span></code>: distances dict (expression(str):mesh(Trimesh)) from <a class="reference internal" href="#mu8"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_diff_mesh()</span></code></span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meshes</span></code>: meshes dict (expression(str):mesh(Trimesh)) from <a class="reference internal" href="#mu8"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_diff_mesh()</span></code></span></a></p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="glasses-fitting">
+<h2>Glasses fitting<a class="headerlink" href="#glasses-fitting" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" id="mu10" start="10">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_trans_glasses(mesh,</span> <span class="pre">template_mesh,</span> <span class="pre">glasses,</span> <span class="pre">idxs,</span> <span class="pre">isScaled)</span></code>:</p>
+<ul class="simple">
+<li><p>Transformed and registered glasses</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code>: head mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template_mesh</span></code>: template head mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glasses</span></code>: OCOsense eyeglasses (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isScaled</span></code>: flag to scale glasses (bool)
+Returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new_glasses</span></code>: registered glasses (Trimesh)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple" id="mu11" start="11">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_regs_glasses(mesh,</span> <span class="pre">glasses,</span> <span class="pre">calib_mesh,</span> <span class="pre">idxs)</span></code>:</p>
+<ul class="simple">
+<li><p>Creates scaled and unscaled glasses - Calling function for <a class="reference internal" href="#mu10"><span class="std std-ref">get_trans_glasses()</span></a></p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code>: head mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glasses</span></code>: OCOsense eyeglasses (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib_mesh</span></code>: calibrated head mesh obtained using <a class="reference internal" href="#mu3"><span class="std std-ref">calib_MICA_h2()</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">idxs</span></code>: reference indices for fitting</p></li>
+</ul>
+</li>
+<li><p>Returns</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: dict with scaled and unscaled glasses</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display_glass_intersection(mesh,</span> <span class="pre">glasses_data,</span> <span class="pre">expName)</span></code>:</p>
+<ul class="simple">
+<li><p>Displays intersected volume of glasses with mesh</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code>: head mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glasses_data</span></code>: dict with scaled and unscaled glasses obtained from <a class="reference internal" href="#mu11"><span class="std std-ref">get_regs_glasses()</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expName</span></code>: expression name (str)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display_mesh_glasses(mesh,</span> <span class="pre">glasses_data,</span> <span class="pre">expName)</span></code>:</p>
+<ul class="simple">
+<li><p>Displays head mesh with fitted glasses</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh</span></code>: head mesh (Trimesh)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glasses_data</span></code>: dict with scaled and unscaled glasses obtained from <a class="reference internal" href="#mu11"><span class="std std-ref">get_regs_glasses()</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expName</span></code>: expression name (str)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="shape-code-analysis">
+<h2>Shape code analysis<a class="headerlink" href="#shape-code-analysis" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="14">
+<li><p><code class="docutils literal notranslate"><span class="pre">show_ptwise_diff(frame_ids,</span> <span class="pre">target_code)</span></code></p>
+<ul class="simple">
+<li><p>Heatmap of shape identities across all frames</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame_ids</span></code>: shapecode identities (numpy array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_code</span></code>: target shape code (numpy array)</p></li>
+</ul>
+</li>
+<li><p>Returns</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_frame_boxplots(frame_ids)</span></code></p>
+<ul class="simple">
+<li><p>Displays boxplots for shapecode vector distribution across all frames</p></li>
+<li><p>Input:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame_ids</span></code>: shapecode identities (numpy array)</p></li>
+</ul>
+</li>
+<li><p>Returns:</p>
+<ul>
+<li><p>None</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pages/page2/MICA/utils"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="utils_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Video utils</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../page3/quickstart.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quickstart guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registration-and-calibration">Registration and calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-analysis">Mesh analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glasses-fitting">Glasses fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-code-analysis">Shape code analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rohan Tuli
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
