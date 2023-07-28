@@ -1,6 +1,6 @@
 # 3D Face Modelling
 
-Documentation for the project of 3D head reconstruction. 
+Documentation for the project of 3D face reconstruction. 
 
 # Table of contents
 
