@@ -95,7 +95,7 @@ Location: `/MICA/src/utils/mesh_utils.py`
         - ```meshes```: meshes dict (expression(str):mesh(Trimesh)) from [```get_diff_mesh()```](mu8)
     - Returns:
         - None
-
+(m1_1)=
 ## Glasses fitting
 (mu10)=
 10. ```get_trans_glasses(mesh, template_mesh, glasses, idxs, isScaled)```:
