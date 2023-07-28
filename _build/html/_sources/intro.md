@@ -9,13 +9,15 @@ Documentation for the project of 3D face reconstruction.
 
 # Project overview
 
-```{figure} /images/code_overview.png
+![code_overview](/images/code_overview.png)
+
+<!-- ```{figure} /images/code_overview.png
 ---
 
 name: code_overview
 ---
 Code overview
-```
+``` -->
 
 To ensure modularity, portability, and streamlined development, the codebase of our 3D head modeling project has been divided into distinct sections. Each section serves a specific purpose, contributing to the overall efficiency and effectiveness of our computer vision application. The sections are:
 
