@@ -14,8 +14,6 @@ chapters:
       sections: 
         - file: pages/page2/MICA/utils/utils_2
         - file: pages/page2/MICA/utils/utils_3
-  # - file: pages/page2/flame_fitting
-  # - file: pages/page2/RingNet
 - file: pages/page3/quickstart
 - file: pages/page4/future_work
 - file: pages/page5/cheatsheet
