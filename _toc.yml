@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: pages/page1/dockerfiles
+- file: pages/page2/containers
+- file: pages/page2/MICA/MICA
+  sections:
+    - file: pages/page2/MICA/mesh_libs
+    - file: pages/page2/MICA/analysis
+    - file: pages/page2/MICA/utils/utils_1
+      sections: 
+        - file: pages/page2/MICA/utils/utils_2
+        - file: pages/page2/MICA/utils/utils_3
+  # - file: pages/page2/flame_fitting
+  # - file: pages/page2/RingNet
+- file: pages/page3/quickstart
+- file: pages/page4/future_work
+- file: pages/page5/cheatsheet
