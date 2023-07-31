@@ -19,6 +19,11 @@ name: code_overview
 Code overview
 ``` -->
 
+```{note}
+Check the [issues](issues) section before executing the flame-fitting repo.
+```
+
+
 To ensure modularity, portability, and streamlined development, the codebase of our 3D head modeling project has been divided into distinct sections. Each section serves a specific purpose, contributing to the overall efficiency and effectiveness of our computer vision application. The sections are:
 
 ## Dockerfiles
