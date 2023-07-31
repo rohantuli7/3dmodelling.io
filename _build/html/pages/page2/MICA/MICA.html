@@ -295,7 +295,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -311,6 +313,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processed-data-loading">Processed data loading</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -330,6 +341,12 @@ document.write(`
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">MICA container overview</span><a class="headerlink" href="#mica-container" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check the <a class="reference internal" href="../../page5/cheatsheet.html#issues"><span class="std std-ref">issues</span></a> section before executing the flame-fitting repo.</p>
+</div>
+<section id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
 <p>Development in this container can be divided into the following sections:</p>
 <ol class="arabic simple">
 <li><p>Mesh libraries</p>
@@ -355,6 +372,18 @@ document.write(`
 </ul>
 </li>
 </ol>
+</section>
+<section id="processed-data-loading">
+<span id="m3"></span><h2>Processed data loading<a class="headerlink" href="#processed-data-loading" title="Permalink to this heading">#</a></h2>
+<p>While working with this container, load the participant data files from <a class="reference external" href="https://drive.google.com/drive/folders/1NPIvkFrtodAK_NFJj6zSKbgrerDwOHTH?usp=share_link">here</a>.</p>
+<ul class="simple">
+<li><p>Unzip <code class="docutils literal notranslate"><span class="pre">emteq_data_collection.gz</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">files.gz</span></code> files in the <code class="docutils literal notranslate"><span class="pre">/MICA</span></code> directory</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Without these files, the data collection analysis will not work and all participant data will have to be loaded seperately. Additionally, ensure the folder structure is followed correctly.</p>
+</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -417,6 +446,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processed-data-loading">Processed data loading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

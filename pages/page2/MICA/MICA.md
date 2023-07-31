@@ -13,6 +13,10 @@ name: mica_container
 MICA container overview
 ```
 
+```{note}
+Check the [issues](issues) section before executing the flame-fitting repo.
+```
+## Libraries
 Development in this container can be divided into the following sections:
 
 1. Mesh libraries
@@ -28,3 +32,12 @@ Development in this container can be divided into the following sections:
     - Data loader
     - Video utils
     - Mesh utils
+
+(M3)=
+## Processed data loading
+While working with this container, load the participant data files from [here](https://drive.google.com/drive/folders/1NPIvkFrtodAK_NFJj6zSKbgrerDwOHTH?usp=share_link).
+- Unzip ```emteq_data_collection.gz``` & ```files.gz``` files in the ```/MICA``` directory
+```{warning}
+Without these files, the data collection analysis will not work and all participant data will have to be loaded seperately. Additionally, ensure the folder structure is followed correctly.
+
+```

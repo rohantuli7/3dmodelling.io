@@ -55,6 +55,8 @@ Minimum requirements:
     ```{note}
     Refer to the [Dockerfile](df1) and [MICA](M1) sections for further information
     ```
+7. Load and extract the data according to this [section](M3).
+
 
 #### Data collection analysis
 

@@ -49,3 +49,7 @@
     ```
     cd MICA/src/dc_analysis/notebooks
     ```
+
+(issues)=
+## Issues:
+1. In the FLAME reverse fitting algorithm (used throughout this project in all code repos), the H2_FLAME models are not in the correct co-ordinate space as the fitting procedure converts the arbitrary mesh to FLAME co-ordinate space (by approximating a scaling factor). The scaled mesh is then used for conversion into FLAME. At the end of the code, the initially calculated scale needs to be re-applied to the output mesh to fix this problem but it would require the entire loading process to be repeated for each participant. Alternative, another script can be written which only calculates the scaling factors of all meshes and applies them to the previously created meshes.

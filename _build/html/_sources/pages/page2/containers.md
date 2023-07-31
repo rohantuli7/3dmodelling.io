@@ -8,6 +8,10 @@ name: containers
 Containers used in this project
 ```
 
+```{note}
+Also see the [data loading section](M3) when using the MICA container.
+```
+
 <!-- ![containers](/images/containers.png) -->
 
 Containers have been employed as a foundational component for the development of code in our 3D head modeling project. The following containers have been used:

@@ -321,6 +321,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-tips">General tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">Issues:</a></li>
 </ul>
             </nav>
         </div>
@@ -380,6 +381,12 @@ document.write(`
 </div>
 </li>
 </ul>
+</section>
+<section id="issues">
+<span id="id1"></span><h2>Issues:<a class="headerlink" href="#issues" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>In the FLAME reverse fitting algorithm (used throughout this project in all code repos), the H2_FLAME models are not in the correct co-ordinate space as the fitting procedure converts the arbitrary mesh to FLAME co-ordinate space (by approximating a scaling factor). The scaled mesh is then used for conversion into FLAME. At the end of the code, the initially calculated scale needs to be re-applied to the output mesh to fix this problem but it would require the entire loading process to be repeated for each participant. Alternative, another script can be written which only calculates the scaling factors of all meshes and applies them to the previously created meshes.</p></li>
+</ol>
 </section>
 </section>
 
@@ -445,6 +452,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-tips">General tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">Issues:</a></li>
 </ul>
   </nav></div>
 
